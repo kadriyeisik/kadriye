@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kadriye Işık | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cream-light: #FFF8F0;
+            --cream-dark: #F4E3D6;
+            --accent: #D8A48F;
+            --text-dark: #3D3D3D;
+            --text-light: #5E5E5E;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-theme {
+            --cream-light: #2D2D2D;
+            --cream-dark: #1A1A1A;
+            --accent: #D8A48F;
+            --text-dark: #F0F0F0;
+            --text-light: #CCCCCC;
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream-light);
+            color: var(--text-dark);
+            transition: var(--transition);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .slider-container {
+            width: 80%;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slider img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-btn {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            margin-right: 15px;
+            transition: var(--transition);
+        }
+        .logo:hover {
+            transform: rotate(10deg);
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        nav {
+            background: var(--cream-dark);
+            padding: 1rem 5%;
+            box-shadow: var(--shadow);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: var(--accent);
+            color: white;
+        }
+        #content-area {
+            padding: 2rem 5%;
+            min-height: 60vh;
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+            background: var(--cream-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .active-content {
+            display: block;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+        .tech-item {
+            background: var(--accent);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+        .blog-post {
+            background: var(--cream-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 1.5rem;
+        }
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+        }
+        .contact-info h1 {
+            margin-bottom: 1.5rem;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .social-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream-dark);
+            margin-top: 2rem;
+        }
+        .social-links {
+            margin-bottom: 1rem;
+        }
+        .social-links a {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+         nav ul {
+         flex-direction: column;
+         align-items: center;
+            }
+         nav li {
+         margin: 0.5rem 0;
+         }
+         .tech-grid {
+         grid-template-columns: repeat(2, 1fr);
+         }
+         header {
+          flex-direction: column;
+          text-align: center;
+         }
+         .logo {
+          margin-right: 0;
+          margin-bottom: 1rem;
+         }
+         .slider img {
+          height: 250px;
+         }
+         .contact-details {
+          align-items: center;
+        }
+        }
+         </style>
+        </head>
+        <body class="light-theme">
+        <button id="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+        </button>
+        <header>
+        <a href="#" class="logo-link" id="home-link">
+         <img src="image/benlogo.jpg" alt="Kadriye Işık" class="logo">
+        <span class="logo-text">Kadriye Işık</span>
+        </a>
+        </header>
+        <nav>
+        <ul>
+         <li><a href="#" data-target="anasayfa" class="nav-link active">Anasayfa</a></li>
+         <li><a href="#" data-target="hakkimda" class="nav-link">Hakkımda</a></li>
+         <li><a href="#" data-target="egitim" class="nav-link">Eğitim</a></li>
+         <li><a href="#" data-target="teknolojiler" class="nav-link">Teknolojiler</a></li>
+         <li><a href="#" data-target="blog" class="nav-link">Blog</a></li>
+         <li><a href="#" data-target="iletisim" class="nav-link">İletişim</a></li>
+        </ul>
+        </nav>
+        <main id="content-area">
+        <section id="anasayfa-content" class="content-section active-content">
+        <div class="slider-container">
+        <div class="slider">
+        <img src="image/bilgisayar.jpg" alt="Proje 1">
+         <img src="image/bilgisayar1.jpg" alt="Proje 2">
+        <img src="image/bilgisayar2.jpg" alt="Proje 3">
+         <img src="image/bilgisayar3.jpg" alt="Proje 4">
+         <img src="image/bilgisayar4.jpg" alt="Proje 5">
+         <img src="image/bilgisayar5.jpg" alt="Proje 6">
+         <img src="image/bilgisayar6.jpg" alt="Proje 7">
+         </div>
+         <div class="slider-controls">
+         <button class="slider-btn" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn" id="next-slide"><i class="fas fa-chevron-right"></i></button>
+         </div>
+         </div>
+        </section>
+        <section id="hakkimda-content" class="content-section">
+         <h1><i class="fas fa-user"></i> Hakkımda</h1>
+         <div class="about-content">
+          <p>Merhaba, ben Darıca Fen Lisesi mezunu ve Alanya Üniversitesi İngilizce Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Yazılım geliştirme alanına duyduğum ilgi sayesinde hem teorik hem de pratik becerilerimi sürekli olarak geliştirmeye odaklanmış durumdayım.</p>
+                
+          <p>2025 yaz döneminde Onaymatik firmasında staj yaparak sektörel deneyim kazanmakta, aynı zamanda yazılım geliştirme süreçlerini profesyonel ortamda gözlemleme ve katkı sunma imkânı bulmaktayım. Java, Python ve JavaScript gibi programlama dillerine hâkimiyetimin yanı sıra, web geliştirme alanında HTML ve CSS gibi teknolojiler üzerine de aktif olarak çalışmakta ve kendimi bu alanda geliştirmekteyim.</p>
+                
+          <p>Akademik bilgi birikimimi gerçek dünya projeleriyle pekiştirmek, ekip çalışmasına yatkınlık kazanmak ve yazılım mühendisliği alanında derinleşmek amacıyla disiplinli bir öğrenme süreci yürütüyorum. Gelecekte tam donanımlı bir yazılım geliştirici olarak teknolojinin insan yaşamına katkıda bulunduğu projelerde yer almayı hedefliyorum.</p>
+                
+          <p>İleri düzeyde İngilizce, orta düzeyde ise Almanca bilmekteyim. Bu sayede hem akademik kaynaklara erişimim genişliyor hem de uluslararası çalışma ortamlarında etkin iletişim kurabiliyorum.</p>
+         </div>
+        </section>
+        <section id="egitim-content" class="content-section">
+        <h1><i class="fas fa-graduation-cap"></i> Eğitim</h1>
+        <div class="timeline">
+        <div class="timeline-item">
+        <div class="timeline-content">
+        <h3>Darıca Fen Lisesi</h3>
+         <p class="timeline-date">2017 - 2021</p>
+         </div>
+         </div>
+         <div class="timeline-item">
+         <div class="timeline-content">
+         <h3>Alanya Üniversitesi</h3>
+         <p class="timeline-date">İngilizce Bilgisayar Mühendisliği (2022 - 2027 Beklenen Mezuniyet)</p>
+          </div>
+         </div>
+         </div>    
+         <h2><i class="fas fa-certificate"></i> Sertifikalar</h2>
+         <ul class="certificates">
+         <li><i class="fas fa-check-circle"></i> Udemy: Modern JavaScript (2023)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: React ile Frontend Geliştirme (2023)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: Java ile OOP (2024)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: PHP ile Backend (2024)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: HTML/CSS Masterclass (2022)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: Python for Beginners (2023)</li>
+         <li><i class="fas fa-check-circle"></i> Udemy: SQL Veritabanı Yönetimi (2024)</li>
+         </ul>
+        </section>
+        <section id="teknolojiler-content" class="content-section">
+         <h1><i class="fas fa-code"></i> Teknolojiler</h1>
+         <div class="tech-grid">
+          <div class="tech-item">
+         <i class="fab fa-html5"></i>
+          <span>HTML</span>
+           </div>
+          <div class="tech-item">
+           <i class="fab fa-css3-alt"></i>
+          <span>CSS</span>
+          </div>
+          <div class="tech-item">
+           <i class="fab fa-js"></i>
+           <span>JavaScript</span>
+           </div>
+           <div class="tech-item">
+           <i class="fab fa-php"></i>
+           <span>PHP</span>
+           </div>
+           <div class="tech-item">
+           <i class="fab fa-java"></i>
+            <span>Java</span>
+            </div>
+            </div>
+           </section>
+
+            <section id="blog-content" class="content-section">
+            <h1><i class="fas fa-blog"></i> Teknik Blog</h1>   
+            <article class="blog-post">
+             <h3>Onaymatik'te Yazılım Stajı Deneyimim</h3>
+             <div class="blog-full-content">
+             <p>Üniversite 3. sınıfta yaz döneminde başladığım Onaymatik stajı, benim için yazılım dünyasının gerçek yüzünü tanımamı sağladı. Burada ilk defa ekip çalışması içinde kod yazma fırsatım oldu. Java ve HTML/CSS bilgimi gerçek projelere uyguladım, aynı zamanda yeni teknolojiler öğrenmem gerekti.</p>
+            <p>Gerçek sistemlerde hata ayıklamak, test yazmak ve geri bildirim almak hem zorlayıcı hem de geliştiriciydi. Bu staj bana sadece teknik değil aynı zamanda profesyonel hayata dair pek çok şey öğretti.</p>
+             <p>🛠️ Özellikle:</p>
+             <ul>
+              <li>İlk başta kod düzenine alışmakta zorlandım ama zamanla sistematik düşünmeyi öğrendim.</li>
+              <li>Takım arkadaşlarımdan "code review" almak, bana yazılımcı bakış açısını öğretti.</li>
+              <li>Kendi başıma bir hatayı bulup çözdüğümde motivasyonum inanılmaz arttı.</li>
+              </ul>
+             <p>✅ Tavsiyem: Staja başlamadan önce basit projeler yaparak pratik kazanın. Staj sadece bilginizi göstermek değil, öğrenmeye ne kadar açık olduğunuzu göstermekle ilgili.</p>
+             </div>
+            </article>
+            <article class="blog-post">
+            <h3>Kişisel Web Sitemi Nasıl Yaptım?</h3>
+             <div class="blog-full-content">
+             <p>Bir yazılımcı olarak kendimi daha iyi ifade edebilmek için kişisel bir web sitesi yapmak istedim. HTML ve CSS bilgimi gerçek bir projeye dönüştürmek hem eğlenceliydi hem de öğretici.</p>
+             <p>Sitede logomu kendim tasarladım, responsive tasarımı test ettim, JavaScript ile etkileşimli bölümler ekledim. Ardından GitHub Pages üzerinden ücretsiz olarak yayınladım.</p>
+             <p>🎨 Kendi yaptığım şeyler:</p>
+             <ul>
+            <li>Renk paletini sade ve kurumsal tuttum</li>
+             <li>Footer, navbar, hakkımda ve blog bölümlerini tek tek kodladım</li>
+            <li>Logo tasarımında yazılım odaklı bir stil kullandım (kod bloğu görünümü)</li>
+             </ul>
+             <p>✅ Tavsiyem: Web sitesi yapmak teknik bir beceriden çok yaratıcı bir yolculuk. Kendinizi tanıtan bir site sizi bir adım öne taşır.</p>
+             </div>
+            </article>
+            <article class="blog-post">
+            <h3>Bilgisayar Mühendisliği Öğrencisi Olarak Günlük Hayatım</h3>
+             <div class="blog-full-content">
+            <p>Darıca Fen Lisesi'nden mezun olup Alanya Üniversitesi'nde İngilizce Bilgisayar Mühendisliği okumak benim için büyük bir dönüşümdü. Her dersin ayrı bir projesi, sınavı, ödevi var. Ama asıl gelişim ders dışında öğrendiklerimde oldu.</p>
+             <p>YouTube'dan kaynak bulmak, dökümantasyon okumaya alışmak ve kendi başına çözüm üretmek bu işin kalbi. Hem kadın hem mühendis adayı olarak "ben yapabilirim" demeyi öğrendim.</p>
+             <p>🧠 Günlük alışkanlıklarım:</p>
+             <ul>
+            <li>En az 1 saat kodlama pratiği</li>
+             <li>Haftalık proje veya blog planı</li>
+             <li>GitHub'da düzenli güncelleme</li>
+             <li>Medium/YouTube'dan yeni teknolojiler öğrenmek</li>
+              </ul>
+            <p>💡 Öğrenci Tavsiyesi: Disiplinli çalışma rutini oluşturmak, uzun vadede en büyük kazancınız olacaktır!</p>
+             </div>
+            </article>
+            <article class="blog-post">
+            <h3>Hangi Dil Ne Zaman? Java mı Python mu?</h3>
+             <div class="blog-full-content">
+             <p>Üniversite projelerinde Java ile OOP mantığını çok iyi öğrendim. Ancak daha hızlı çözüm üretmek istediğimde Python devreye girdi. Özellikle:</p>
+             <ul>
+             <li>Java: Büyük ölçekli projeler ve OOP prensipleri için mükemmel</li>
+            <li>Python: Veri analizi, makine öğrenmesi ve hızlı prototipleme için ideal</li>
+             <li>JavaScript: Web arayüzleri ve etkileşimli uygulamalar için vazgeçilmez</li>
+             </ul>
+             <p>🔍 Kişisel deneyimlerim:</p>
+             <ul>
+              <li>Okul projelerinde Java'nın katı yapısı algoritmik düşünmemi geliştirdi</li>
+             <li>Python'da pandas kütüphanesiyle veri işleme çok daha pratik</li>
+              <li>JavaScript async yapısını öğrenmek frontend development'ta çığır açtı</li>
+             </ul>
+             <p>🌟 Kariyer Tavsiyesi: "Hangi dil?" sorusundan çok "Hangi problem?" sorusuna odaklanın. Dil sadece araçtır!</p>
+             </div>
+             </article>
+             </section>
+             <section id="iletisim-content" class="content-section">
+             <div class="contact-info">
+            <h1><i class="fas fa-envelope"></i> İletişim</h1>
+            <div class="contact-details">
+            <div class="contact-item">
+             <i class="fas fa-envelope"></i>
+              <span>kadriyeisik@gmail.com</span>
+             </div>
+              <div class="contact-item">
+             <i class="fas fa-map-marker-alt"></i>
+             <span>İstanbul, Türkiye</span>
+             </div>
+             </div>    
+            <h2>Sosyal Medya Hesaplarım</h2>
+            <div class="social-media">
+             <a href="https://github.com/kadriye" target="_blank" class="social-icon">
+             <i class="fab fa-github"></i>
+             </a>
+             <a href="https://linkedin.com/in/kadriyeisik" target="_blank" class="social-icon">
+             <i class="fab fa-linkedin"></i>
+             </a>
+             <a href="mailto:kadriyeisik@gmail.com" class="social-icon">
+             <i class="fas fa-envelope"></i>
+             </a>
+             </div>
+             </div>
+             </section>
+             </main>
+             <footer>
+            <div class="social-links">
+            <a href="https://github.com/kadriye" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/kadriyeisik" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:kadriyeisik@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>© 2025 Kadriye Işık. Tüm hakları saklıdır.</p>
+            </footer>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+            $(document).ready(function() {
+            let currentSlide = 0;
+            const slides = $('.slider img');
+            const totalSlides = slides.length;
+            function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;    
+            $('.slider').css('transform', `translateX(-${currentSlide * 100}%)`);
+            }
+            $('#next-slide').click(() => showSlide(currentSlide + 1));
+            $('#prev-slide').click(() => showSlide(currentSlide - 1));
+            $('#theme-toggle').click(function() {
+            $('body').toggleClass('dark-theme');
+            $(this).find('i').toggleClass('fa-moon fa-sun');
+            localStorage.setItem('theme', $('body').hasClass('dark-theme') ? 'dark' : 'light');
+            });
+            $('#home-link').click(function(e) {
+             e.preventDefault();
+            $('.nav-link').removeClass('active');
+            $('.content-section').removeClass('active-content');
+            $('#anasayfa-content').addClass('active-content');
+            $('html, body').animate({ scrollTop: 0 }, 500);
+            $('nav a[data-target="anasayfa"]').addClass('active');
+            });
+            $('.nav-link').click(function(e) {
+             e.preventDefault();
+             const target = $(this).data('target');    
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');     
+            $('.content-section').removeClass('active-content');
+            $(`#${target}-content`).addClass('active-content');    
+            $('html, body').animate({
+            scrollTop: $(`#${target}-content`).offset().top - 100
+            }, 500);
+            });
+            if (localStorage.getItem('theme') === 'dark') {
+            $('body').addClass('dark-theme');
+            $('#theme-toggle i').removeClass('fa-moon').addClass('fa-sun');
+            }
+            });
+          </script>
+          </body>
+          </html>
