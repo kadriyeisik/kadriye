@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadriye Işık | Portfolio</title>
+    <title data-i18n="page_title">Kadriye Işık | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,7 +15,6 @@
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
-
         .dark-theme {
             --cream-light: #2D2D2D;
             --cream-dark: #1A1A1A;
@@ -24,7 +23,18 @@
             --text-light: #CCCCCC;
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 70px;
+            z-index: 1000;
+            background: var(--cream-dark);
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+            color: var(--text-dark);
+            cursor: pointer;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--cream-light);
@@ -271,27 +281,35 @@
          .contact-details {
           align-items: center;
         }
+        .language-selector {
+            right: 20px;
+            top: 80px;
         }
-         </style>
+        }
+        </style>
         </head>
         <body class="light-theme">
         <button id="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
         </button>
+        <select id="language-selector" class="language-selector">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+        </select>
         <header>
         <a href="#" class="logo-link" id="home-link">
-         <img src="image/benlogo.jpg" alt="Kadriye Işık" class="logo">
+        <img src="image/benlogo.jpg" alt="Kadriye Işık" class="logo">
         <span class="logo-text">Kadriye Işık</span>
         </a>
         </header>
         <nav>
         <ul>
-         <li><a href="#" data-target="anasayfa" class="nav-link active">Anasayfa</a></li>
-         <li><a href="#" data-target="hakkimda" class="nav-link">Hakkımda</a></li>
-         <li><a href="#" data-target="egitim" class="nav-link">Eğitim</a></li>
-         <li><a href="#" data-target="teknolojiler" class="nav-link">Teknolojiler</a></li>
-         <li><a href="#" data-target="blog" class="nav-link">Blog</a></li>
-         <li><a href="#" data-target="iletisim" class="nav-link">İletişim</a></li>
+        <li><a href="#" data-target="anasayfa" class="nav-link active" data-i18n="home">Anasayfa</a></li>
+        <li><a href="#" data-target="hakkimda" class="nav-link" data-i18n="about">Hakkımda</a></li>
+        <li><a href="#" data-target="egitim" class="nav-link" data-i18n="education">Eğitim</a></li>
+        <li><a href="#" data-target="teknolojiler" class="nav-link" data-i18n="technologies">Teknolojiler</a></li>
+        <li><a href="#" data-target="blog" class="nav-link" data-i18n="blog">Blog</a></li>
+        <li><a href="#" data-target="iletisim" class="nav-link" data-i18n="contact">İletişim</a></li>
         </ul>
         </nav>
         <main id="content-area">
@@ -299,227 +317,378 @@
         <div class="slider-container">
         <div class="slider">
         <img src="image/bilgisayar.jpg" alt="Proje 1">
-         <img src="image/bilgisayar1.jpg" alt="Proje 2">
+        <img src="image/bilgisayar1.jpg" alt="Proje 2">
         <img src="image/bilgisayar2.jpg" alt="Proje 3">
-         <img src="image/bilgisayar3.jpg" alt="Proje 4">
-         <img src="image/bilgisayar4.jpg" alt="Proje 5">
-         <img src="image/bilgisayar5.jpg" alt="Proje 6">
-         <img src="image/bilgisayar6.jpg" alt="Proje 7">
-         </div>
-         <div class="slider-controls">
-         <button class="slider-btn" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+        <img src="image/bilgisayar3.jpg" alt="Proje 4">
+        <img src="image/bilgisayar4.jpg" alt="Proje 5">
+        <img src="image/bilgisayar5.jpg" alt="Proje 6">
+        <img src="image/bilgisayar6.jpg" alt="Proje 7">
+        </div>
+        <div class="slider-controls">
+        <button class="slider-btn" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
         <button class="slider-btn" id="next-slide"><i class="fas fa-chevron-right"></i></button>
-         </div>
-         </div>
+        </div>
+        </div>
         </section>
         <section id="hakkimda-content" class="content-section">
-         <h1><i class="fas fa-user"></i> Hakkımda</h1>
-         <div class="about-content">
-          <p>Merhaba, ben Darıca Fen Lisesi mezunu ve Alanya Üniversitesi İngilizce Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Yazılım geliştirme alanına duyduğum ilgi sayesinde hem teorik hem de pratik becerilerimi sürekli olarak geliştirmeye odaklanmış durumdayım.</p>
+        <h1><i class="fas fa-user"></i> <span data-i18n="about_title">Hakkımda</span></h1>
+        <div class="about-content">
+        <p data-i18n="about_paragraph1">Merhaba, ben Darıca Fen Lisesi mezunu ve Alanya Üniversitesi İngilizce Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Yazılım geliştirme alanına duyduğum ilgi sayesinde hem teorik hem de pratik becerilerimi sürekli olarak geliştirmeye odaklanmış durumdayım.</p>
                 
-          <p>2025 yaz döneminde Onaymatik firmasında staj yaparak sektörel deneyim kazanmakta, aynı zamanda yazılım geliştirme süreçlerini profesyonel ortamda gözlemleme ve katkı sunma imkânı bulmaktayım. Java, Python ve JavaScript gibi programlama dillerine hâkimiyetimin yanı sıra, web geliştirme alanında HTML ve CSS gibi teknolojiler üzerine de aktif olarak çalışmakta ve kendimi bu alanda geliştirmekteyim.</p>
+        <p data-i18n="about_paragraph2">2025 yaz döneminde Onaymatik firmasında staj yaparak sektörel deneyim kazanmakta, aynı zamanda yazılım geliştirme süreçlerini profesyonel ortamda gözlemleme ve katkı sunma imkânı bulmaktayım. Java, Python ve JavaScript gibi programlama dillerine hâkimiyetimin yanı sıra, web geliştirme alanında HTML ve CSS gibi teknolojiler üzerine de aktif olarak çalışmakta ve kendimi bu alanda geliştirmekteyim.</p>
                 
-          <p>Akademik bilgi birikimimi gerçek dünya projeleriyle pekiştirmek, ekip çalışmasına yatkınlık kazanmak ve yazılım mühendisliği alanında derinleşmek amacıyla disiplinli bir öğrenme süreci yürütüyorum. Gelecekte tam donanımlı bir yazılım geliştirici olarak teknolojinin insan yaşamına katkıda bulunduğu projelerde yer almayı hedefliyorum.</p>
+        <p data-i18n="about_paragraph3">Akademik bilgi birikimimi gerçek dünya projeleriyle pekiştirmek, ekip çalışmasına yatkınlık kazanmak ve yazılım mühendisliği alanında derinleşmek amacıyla disiplinli bir öğrenme süreci yürütüyorum. Gelecekte tam donanımlı bir yazılım geliştirici olarak teknolojinin insan yaşamına katkıda bulunduğu projelerde yer almayı hedefliyorum.</p>
                 
-          <p>İleri düzeyde İngilizce, orta düzeyde ise Almanca bilmekteyim. Bu sayede hem akademik kaynaklara erişimim genişliyor hem de uluslararası çalışma ortamlarında etkin iletişim kurabiliyorum.</p>
-         </div>
+        <p data-i18n="about_paragraph4">İleri düzeyde İngilizce, orta düzeyde ise Almanca bilmekteyim. Bu sayede hem akademik kaynaklara erişimim genişliyor hem de uluslararası çalışma ortamlarında etkin iletişim kurabiliyorum.</p>
+        </div>
         </section>
         <section id="egitim-content" class="content-section">
-        <h1><i class="fas fa-graduation-cap"></i> Eğitim</h1>
+        <h1><i class="fas fa-graduation-cap"></i> <span data-i18n="education_title">Eğitim</span></h1>
         <div class="timeline">
         <div class="timeline-item">
         <div class="timeline-content">
-        <h3>Darıca Fen Lisesi</h3>
+        <h3 data-i18n="high_school">Darıca Fen Lisesi</h3>
          <p class="timeline-date">2017 - 2021</p>
-         </div>
-         </div>
-         <div class="timeline-item">
-         <div class="timeline-content">
-         <h3>Alanya Üniversitesi</h3>
-         <p class="timeline-date">İngilizce Bilgisayar Mühendisliği (2022 - 2027 Beklenen Mezuniyet)</p>
-          </div>
-         </div>
-         </div>    
-         <h2><i class="fas fa-certificate"></i> Sertifikalar</h2>
-         <ul class="certificates">
-         <li><i class="fas fa-check-circle"></i> Udemy: Modern JavaScript (2023)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: React ile Frontend Geliştirme (2023)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: Java ile OOP (2024)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: PHP ile Backend (2024)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: HTML/CSS Masterclass (2022)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: Python for Beginners (2023)</li>
-         <li><i class="fas fa-check-circle"></i> Udemy: SQL Veritabanı Yönetimi (2024)</li>
-         </ul>
+        </div>
+        </div>
+        <div class="timeline-item">
+        <div class="timeline-content">
+        <h3 data-i18n="university">Alanya Üniversitesi</h3>
+        <p class="timeline-date" data-i18n="university_desc">İngilizce Bilgisayar Mühendisliği (2022 - 2027 Beklenen Mezuniyet)</p>
+        </div>
+        </div>
+        </div>    
+        <h2><i class="fas fa-certificate"></i> <span data-i18n="certificates">Sertifikalar</span></h2>
+        <ul class="certificates">
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert1">Udemy: Modern JavaScript (2023)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert2">Udemy: React ile Frontend Geliştirme (2023)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert3">Udemy: Java ile OOP (2024)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert4">Udemy: PHP ile Backend (2024)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert5">Udemy: HTML/CSS Masterclass (2022)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert6">Udemy: Python for Beginners (2023)</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="cert7">Udemy: SQL Veritabanı Yönetimi (2024)</span></li>
+        </ul>
         </section>
         <section id="teknolojiler-content" class="content-section">
-         <h1><i class="fas fa-code"></i> Teknolojiler</h1>
-         <div class="tech-grid">
-          <div class="tech-item">
-         <i class="fab fa-html5"></i>
-          <span>HTML</span>
-           </div>
-          <div class="tech-item">
-           <i class="fab fa-css3-alt"></i>
-          <span>CSS</span>
-          </div>
-          <div class="tech-item">
-           <i class="fab fa-js"></i>
-           <span>JavaScript</span>
-           </div>
-           <div class="tech-item">
-           <i class="fab fa-php"></i>
-           <span>PHP</span>
-           </div>
-           <div class="tech-item">
-           <i class="fab fa-java"></i>
-            <span>Java</span>
-            </div>
-            </div>
-           </section>
-
-            <section id="blog-content" class="content-section">
-            <h1><i class="fas fa-blog"></i> Teknik Blog</h1>   
-            <article class="blog-post">
-             <h3>Onaymatik'te Yazılım Stajı Deneyimim</h3>
-             <div class="blog-full-content">
-             <p>Üniversite 3. sınıfta yaz döneminde başladığım Onaymatik stajı, benim için yazılım dünyasının gerçek yüzünü tanımamı sağladı. Burada ilk defa ekip çalışması içinde kod yazma fırsatım oldu. Java ve HTML/CSS bilgimi gerçek projelere uyguladım, aynı zamanda yeni teknolojiler öğrenmem gerekti.</p>
-            <p>Gerçek sistemlerde hata ayıklamak, test yazmak ve geri bildirim almak hem zorlayıcı hem de geliştiriciydi. Bu staj bana sadece teknik değil aynı zamanda profesyonel hayata dair pek çok şey öğretti.</p>
-             <p>🛠️ Özellikle:</p>
-             <ul>
-              <li>İlk başta kod düzenine alışmakta zorlandım ama zamanla sistematik düşünmeyi öğrendim.</li>
-              <li>Takım arkadaşlarımdan "code review" almak, bana yazılımcı bakış açısını öğretti.</li>
-              <li>Kendi başıma bir hatayı bulup çözdüğümde motivasyonum inanılmaz arttı.</li>
-              </ul>
-             <p>✅ Tavsiyem: Staja başlamadan önce basit projeler yaparak pratik kazanın. Staj sadece bilginizi göstermek değil, öğrenmeye ne kadar açık olduğunuzu göstermekle ilgili.</p>
-             </div>
-            </article>
-            <article class="blog-post">
-            <h3>Kişisel Web Sitemi Nasıl Yaptım?</h3>
-             <div class="blog-full-content">
-             <p>Bir yazılımcı olarak kendimi daha iyi ifade edebilmek için kişisel bir web sitesi yapmak istedim. HTML ve CSS bilgimi gerçek bir projeye dönüştürmek hem eğlenceliydi hem de öğretici.</p>
-             <p>Sitede logomu kendim tasarladım, responsive tasarımı test ettim, JavaScript ile etkileşimli bölümler ekledim. Ardından GitHub Pages üzerinden ücretsiz olarak yayınladım.</p>
-             <p>🎨 Kendi yaptığım şeyler:</p>
-             <ul>
-            <li>Renk paletini sade ve kurumsal tuttum</li>
-             <li>Footer, navbar, hakkımda ve blog bölümlerini tek tek kodladım</li>
-            <li>Logo tasarımında yazılım odaklı bir stil kullandım (kod bloğu görünümü)</li>
-             </ul>
-             <p>✅ Tavsiyem: Web sitesi yapmak teknik bir beceriden çok yaratıcı bir yolculuk. Kendinizi tanıtan bir site sizi bir adım öne taşır.</p>
-             </div>
-            </article>
-            <article class="blog-post">
-            <h3>Bilgisayar Mühendisliği Öğrencisi Olarak Günlük Hayatım</h3>
-             <div class="blog-full-content">
-            <p>Darıca Fen Lisesi'nden mezun olup Alanya Üniversitesi'nde İngilizce Bilgisayar Mühendisliği okumak benim için büyük bir dönüşümdü. Her dersin ayrı bir projesi, sınavı, ödevi var. Ama asıl gelişim ders dışında öğrendiklerimde oldu.</p>
-             <p>YouTube'dan kaynak bulmak, dökümantasyon okumaya alışmak ve kendi başına çözüm üretmek bu işin kalbi. Hem kadın hem mühendis adayı olarak "ben yapabilirim" demeyi öğrendim.</p>
-             <p>🧠 Günlük alışkanlıklarım:</p>
-             <ul>
-            <li>En az 1 saat kodlama pratiği</li>
-             <li>Haftalık proje veya blog planı</li>
-             <li>GitHub'da düzenli güncelleme</li>
-             <li>Medium/YouTube'dan yeni teknolojiler öğrenmek</li>
-              </ul>
-            <p>💡 Öğrenci Tavsiyesi: Disiplinli çalışma rutini oluşturmak, uzun vadede en büyük kazancınız olacaktır!</p>
-             </div>
-            </article>
-            <article class="blog-post">
-            <h3>Hangi Dil Ne Zaman? Java mı Python mu?</h3>
-             <div class="blog-full-content">
-             <p>Üniversite projelerinde Java ile OOP mantığını çok iyi öğrendim. Ancak daha hızlı çözüm üretmek istediğimde Python devreye girdi. Özellikle:</p>
-             <ul>
-             <li>Java: Büyük ölçekli projeler ve OOP prensipleri için mükemmel</li>
-            <li>Python: Veri analizi, makine öğrenmesi ve hızlı prototipleme için ideal</li>
-             <li>JavaScript: Web arayüzleri ve etkileşimli uygulamalar için vazgeçilmez</li>
-             </ul>
-             <p>🔍 Kişisel deneyimlerim:</p>
-             <ul>
-              <li>Okul projelerinde Java'nın katı yapısı algoritmik düşünmemi geliştirdi</li>
-             <li>Python'da pandas kütüphanesiyle veri işleme çok daha pratik</li>
-              <li>JavaScript async yapısını öğrenmek frontend development'ta çığır açtı</li>
-             </ul>
-             <p>🌟 Kariyer Tavsiyesi: "Hangi dil?" sorusundan çok "Hangi problem?" sorusuna odaklanın. Dil sadece araçtır!</p>
-             </div>
-             </article>
-             </section>
-             <section id="iletisim-content" class="content-section">
-             <div class="contact-info">
-            <h1><i class="fas fa-envelope"></i> İletişim</h1>
-            <div class="contact-details">
-            <div class="contact-item">
-             <i class="fas fa-envelope"></i>
-              <span>kadriyeisik@gmail.com</span>
-             </div>
-              <div class="contact-item">
-             <i class="fas fa-map-marker-alt"></i>
-             <span>İstanbul, Türkiye</span>
-             </div>
-             </div>    
-            <h2>Sosyal Medya Hesaplarım</h2>
-            <div class="social-media">
-             <a href="https://github.com/kadriyeisik" target="_blank" class="social-icon">
-             <i class="fab fa-github"></i>
-             </a>
-             <a href="https://linkedin.com/in/kadriyeisik" target="_blank" class="social-icon">
-             <i class="fab fa-linkedin"></i>
-             </a>
-             <a href="mailto:kadriyeisik@gmail.com" class="social-icon">
-             <i class="fas fa-envelope"></i>
-             </a>
-             </div>
-             </div>
-             </section>
-             </main>
-             <footer>
-            <div class="social-links">
-            <a href="https://github.com/kadriye" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/kadriyeisik" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:kadriyeisik@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p>© 2025 Kadriye Işık. Tüm hakları saklıdır.</p>
-            </footer>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-            $(document).ready(function() {
+        <h1><i class="fas fa-code"></i> <span data-i18n="technologies_title">Teknolojiler</span></h1>
+        <div class="tech-grid">
+        <div class="tech-item">
+        <i class="fab fa-html5"></i>
+        <span>HTML</span>
+        </div>
+        <div class="tech-item">
+        <i class="fab fa-css3-alt"></i>
+        <span>CSS</span>
+        </div>
+        <div class="tech-item">
+        <i class="fab fa-js"></i>
+        <span>JavaScript</span>
+        </div>
+        <div class="tech-item">
+        <i class="fab fa-php"></i>
+        <span>PHP</span>
+        </div>
+        <div class="tech-item">
+        <i class="fab fa-java"></i>
+        <span>Java</span>
+        </div>
+        </div>
+        </section>
+        <section id="blog-content" class="content-section">
+        <h1><i class="fas fa-blog"></i> <span data-i18n="blog_title">Teknik Blog</span></h1>   
+        <article class="blog-post">
+        <h3 data-i18n="blog_title1">Onaymatik'te Yazılım Stajı Deneyimim</h3>
+        <div class="blog-full-content">
+        <p data-i18n="blog_content1_1">Üniversite 3. sınıfta yaz döneminde başladığım Onaymatik stajı, benim için yazılım dünyasının gerçek yüzünü tanımamı sağladı. Burada ilk defa ekip çalışması içinde kod yazma fırsatım oldu. Java ve HTML/CSS bilgimi gerçek projelere uyguladım, aynı zamanda yeni teknolojiler öğrenmem gerekti.</p>
+        <p data-i18n="blog_content1_2">Gerçek sistemlerde hata ayıklamak, test yazmak ve geri bildirim almak hem zorlayıcı hem de geliştiriciydi. Bu staj bana sadece teknik değil aynı zamanda profesyonel hayata dair pek çok şey öğretti.</p>
+        <p data-i18n="blog_content1_3">🛠️ Özellikle:</p>
+        <ul>
+        <li data-i18n="blog_content1_4">İlk başta kod düzenine alışmakta zorlandım ama zamanla sistematik düşünmeyi öğrendim.</li>
+        <li data-i18n="blog_content1_5">Takım arkadaşlarımdan "code review" almak, bana yazılımcı bakış açısını öğretti.</li>
+        <li data-i18n="blog_content1_6">Kendi başıma bir hatayı bulup çözdüğümde motivasyonum inanılmaz arttı.</li>
+        </ul>
+        <p data-i18n="blog_content1_7">✅ Tavsiyem: Staja başlamadan önce basit projeler yaparak pratik kazanın. Staj sadece bilginizi göstermek değil, öğrenmeye ne kadar açık olduğunuzu göstermekle ilgili.</p>
+        </div>
+        </article>
+        <article class="blog-post">
+        <h3 data-i18n="blog_title2">Kişisel Web Sitemi Nasıl Yaptım?</h3>
+        <div class="blog-full-content">
+        <p data-i18n="blog_content2_1">Bir yazılımcı olarak kendimi daha iyi ifade edebilmek için kişisel bir web sitesi yapmak istedim. HTML ve CSS bilgimi gerçek bir projeye dönüştürmek hem eğlenceliydi hem de öğretici.</p>
+        <p data-i18n="blog_content2_2">Sitede logomu kendim tasarladım, responsive tasarımı test ettim, JavaScript ile etkileşimli bölümler ekledim. Ardından GitHub Pages üzerinden ücretsiz olarak yayınladım.</p>
+        <p data-i18n="blog_content2_3">🎨 Kendi yaptığım şeyler:</p>
+        <ul>
+        <li data-i18n="blog_content2_4">Renk paletini sade ve kurumsal tuttum</li>
+        <li data-i18n="blog_content2_5">Footer, navbar, hakkımda ve blog bölümlerini tek tek kodladım</li>
+        <li data-i18n="blog_content2_6">Logo tasarımında yazılım odaklı bir stil kullandım (kod bloğu görünümü)</li>
+        </ul>
+        <p data-i18n="blog_content2_7">✅ Tavsiyem: Web sitesi yapmak teknik bir beceriden çok yaratıcı bir yolculuk. Kendinizi tanıtan bir site sizi bir adım öne taşır.</p>
+        </div>
+        </article>
+        <article class="blog-post">
+        <h3 data-i18n="blog_title3">Bilgisayar Mühendisliği Öğrencisi Olarak Günlük Hayatım</h3>
+        <div class="blog-full-content">
+        <p data-i18n="blog_content3_1">Darıca Fen Lisesi'nden mezun olup Alanya Üniversitesi'nde İngilizce Bilgisayar Mühendisliği okumak benim için büyük bir dönüşümdü. Her dersin ayrı bir projesi, sınavı, ödevi var. Ama asıl gelişim ders dışında öğrendiklerimde oldu.</p>
+        <p data-i18n="blog_content3_2">YouTube'dan kaynak bulmak, dökümantasyon okumaya alışmak ve kendi başına çözüm üretmek bu işin kalbi. Hem kadın hem mühendis adayı olarak "ben yapabilirim" demeyi öğrendim.</p>
+        <p data-i18n="blog_content3_3">🧠 Günlük alışkanlıklarım:</p>
+        <ul>
+        <li data-i18n="blog_content3_4">En az 1 saat kodlama pratiği</li>
+        <li data-i18n="blog_content3_5">Haftalık proje veya blog planı</li>
+        <li data-i18n="blog_content3_6">GitHub'da düzenli güncelleme</li>
+        <li data-i18n="blog_content3_7">Medium/YouTube'dan yeni teknolojiler öğrenmek</li>
+        </ul>
+        <p data-i18n="blog_content3_8">💡 Öğrenci Tavsiyesi: Disiplinli çalışma rutini oluşturmak, uzun vadede en büyük kazancınız olacaktır!</p>
+        </div>
+        </article>
+        <article class="blog-post">
+        <h3 data-i18n="blog_title4">Hangi Dil Ne Zaman? Java mı Python mu?</h3>
+        <div class="blog-full-content">
+        <p data-i18n="blog_content4_1">Üniversite projelerinde Java ile OOP mantığını çok iyi öğrendim. Ancak daha hızlı çözüm üretmek istediğimde Python devreye girdi. Özellikle:</p>
+        <ul>
+        <li data-i18n="blog_content4_2">Java: Büyük ölçekli projeler ve OOP prensipleri için mükemmel</li>
+        <li data-i18n="blog_content4_3">Python: Veri analizi, makine öğrenmesi ve hızlı prototipleme için ideal</li>
+        <li data-i18n="blog_content4_4">JavaScript: Web arayüzleri ve etkileşimli uygulamalar için vazgeçilmez</li>
+        </ul>
+        <p data-i18n="blog_content4_5">🔍 Kişisel deneyimlerim:</p>
+        <ul>
+        <li data-i18n="blog_content4_6">Okul projelerinde Java'nın katı yapısı algoritmik düşünmemi geliştirdi</li>
+        <li data-i18n="blog_content4_7">Python'da pandas kütüphanesiyle veri işleme çok daha pratik</li>
+        <li data-i18n="blog_content4_8">JavaScript async yapısını öğrenmek frontend development'ta çığır açtı</li>
+        </ul>
+        <p data-i18n="blog_content4_9">🌟 Kariyer Tavsiyesi: "Hangi dil?" sorusundan çok "Hangi problem?" sorusuna odaklanın. Dil sadece araçtır!</p>
+        </div>
+        </article>
+        </section>
+        <section id="iletisim-content" class="content-section">
+        <div class="contact-info">
+        <h1><i class="fas fa-envelope"></i> <span data-i18n="contact_title">İletişim</span></h1>
+        <div class="contact-details">
+        <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>kadriyeisik@gmail.com</span>
+        </div>
+        <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span data-i18n="location">İstanbul, Türkiye</span>
+        </div>
+        </div>    
+        <h2 data-i18n="social_media">Sosyal Medya Hesaplarım</h2>
+        <div class="social-media">
+        <a href="https://github.com/kadriyeisik" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/kadriyeisik" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:kadriyeisik@gmail.com" class="social-icon">
+        <i class="fas fa-envelope"></i>
+        </a>
+       </div>
+       </div>
+       </section>
+       </main>
+       <footer>
+        <div class="social-links">
+        <a href="https://github.com/kadriye" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/kadriyeisik" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:kadriyeisik@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>© 2025 Kadriye Işık. <span data-i18n="rights">Tüm hakları saklıdır.</span></p>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+        const translations = {
+        tr: {
+        "page_title": "Kadriye Işık | Portfolio",
+        "rights": "Tüm hakları saklıdır",            
+                    "home": "Anasayfa",
+                    "about": "Hakkımda",
+                    "education": "Eğitim",
+                    "technologies": "Teknolojiler",
+                    "blog": "Blog",
+                    "contact": "İletişim",                                    
+                    "about_title": "Hakkımda",
+                    "about_paragraph1": "Merhaba, ben Darıca Fen Lisesi mezunu ve Alanya Üniversitesi İngilizce Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Yazılım geliştirme alanına duyduğum ilgi sayesinde hem teorik hem de pratik becerilerimi sürekli olarak geliştirmeye odaklanmış durumdayım.",
+                    "about_paragraph2": "2025 yaz döneminde Onaymatik firmasında staj yaparak sektörel deneyim kazanmakta, aynı zamanda yazılım geliştirme süreçlerini profesyonel ortamda gözlemleme ve katkı sunma imkânı bulmaktayım. Java, Python ve JavaScript gibi programlama dillerine hâkimiyetimin yanı sıra, web geliştirme alanında HTML ve CSS gibi teknolojiler üzerine de aktif olarak çalışmakta ve kendimi bu alanda geliştirmekteyim.",
+                    "about_paragraph3": "Akademik bilgi birikimimi gerçek dünya projeleriyle pekiştirmek, ekip çalışmasına yatkınlık kazanmak ve yazılım mühendisliği alanında derinleşmek amacıyla disiplinli bir öğrenme süreci yürütüyorum. Gelecekte tam donanımlı bir yazılım geliştirici olarak teknolojinin insan yaşamına katkıda bulunduğu projelerde yer almayı hedefliyorum.",
+                    "about_paragraph4": "İleri düzeyde İngilizce, orta düzeyde ise Almanca bilmekteyim. Bu sayede hem akademik kaynaklara erişimim genişliyor hem de uluslararası çalışma ortamlarında etkin iletişim kurabiliyorum.",                
+                    "education_title": "Eğitim",
+                    "high_school": "Darıca Fen Lisesi",
+                    "university": "Alanya Üniversitesi",
+                    "university_desc": "İngilizce Bilgisayar Mühendisliği (2022 - 2027 Beklenen Mezuniyet)",
+                    "certificates": "Sertifikalar",
+                    "cert1": "Udemy: Modern JavaScript (2023)",
+                    "cert2": "Udemy: React ile Frontend Geliştirme (2023)",
+                    "cert3": "Udemy: Java ile OOP (2024)",
+                    "cert4": "Udemy: PHP ile Backend (2024)",
+                    "cert5": "Udemy: HTML/CSS Masterclass (2022)",
+                    "cert6": "Udemy: Python for Beginners (2023)",
+                    "cert7": "Udemy: SQL Veritabanı Yönetimi (2024)",                 
+                    "technologies_title": "Teknolojiler",
+                    "blog_title": "Teknik Blog",
+                    "blog_title1": "Onaymatik'te Yazılım Stajı Deneyimim",
+                    "blog_content1_1": "Üniversite 3. sınıfta yaz döneminde başladığım Onaymatik stajı, benim için yazılım dünyasının gerçek yüzünü tanımamı sağladı. Burada ilk defa ekip çalışması içinde kod yazma fırsatım oldu. Java ve HTML/CSS bilgimi gerçek projelere uyguladım, aynı zamanda yeni teknolojiler öğrenmem gerekti.",
+                    "blog_content1_2": "Gerçek sistemlerde hata ayıklamak, test yazmak ve geri bildirim almak hem zorlayıcı hem de geliştiriciydi. Bu staj bana sadece teknik değil aynı zamanda profesyonel hayata dair pek çok şey öğretti.",
+                    "blog_content1_3": "🛠️ Özellikle:",
+                    "blog_content1_4": "İlk başta kod düzenine alışmakta zorlandım ama zamanla sistematik düşünmeyi öğrendim.",
+                    "blog_content1_5": "Takım arkadaşlarımdan 'code review' almak, bana yazılımcı bakış açısını öğretti.",
+                    "blog_content1_6": "Kendi başıma bir hatayı bulup çözdüğümde motivasyonum inanılmaz arttı.",
+                    "blog_content1_7": "✅ Tavsiyem: Staja başlamadan önce basit projeler yaparak pratik kazanın. Staj sadece bilginizi göstermek değil, öğrenmeye ne kadar açık olduğunuzu göstermekle ilgili.",
+                    "blog_title2": "Kişisel Web Sitemi Nasıl Yaptım?",
+                    "blog_content2_1": "Bir yazılımcı olarak kendimi daha iyi ifade edebilmek için kişisel bir web sitesi yapmak istedim. HTML ve CSS bilgimi gerçek bir projeye dönüştürmek hem eğlenceliydi hem de öğretici.",
+                    "blog_content2_2": "Sitede logomu kendim tasarladım, responsive tasarımı test ettim, JavaScript ile etkileşimli bölümler ekledim. Ardından GitHub Pages üzerinden ücretsiz olarak yayınladım.",
+                    "blog_content2_3": "🎨 Kendi yaptığım şeyler:",
+                    "blog_content2_4": "Renk paletini sade ve kurumsal tuttum",
+                    "blog_content2_5": "Footer, navbar, hakkımda ve blog bölümlerini tek tek kodladım",
+                    "blog_content2_6": "Logo tasarımında yazılım odaklı bir stil kullandım (kod bloğu görünümü)",
+                    "blog_content2_7": "✅ Tavsiyem: Web sitesi yapmak teknik bir beceriden çok yaratıcı bir yolculuk. Kendinizi tanıtan bir site sizi bir adım öne taşır.",
+                    "blog_title3": "Bilgisayar Mühendisliği Öğrencisi Olarak Günlük Hayatım",
+                    "blog_content3_1": "Darıca Fen Lisesi'nden mezun olup Alanya Üniversitesi'nde İngilizce Bilgisayar Mühendisliği okumak benim için büyük bir dönüşümdü. Her dersin ayrı bir projesi, sınavı, ödevi var. Ama asıl gelişim ders dışında öğrendiklerimde oldu.",
+                    "blog_content3_2": "YouTube'dan kaynak bulmak, dökümantasyon okumaya alışmak ve kendi başına çözüm üretmek bu işin kalbi. Hem kadın hem mühendis adayı olarak 'ben yapabilirim' demeyi öğrendim.",
+                    "blog_content3_3": "🧠 Günlük alışkanlıklarım:",
+                    "blog_content3_4": "En az 1 saat kodlama pratiği",
+                    "blog_content3_5": "Haftalık proje veya blog planı",
+                    "blog_content3_6": "GitHub'da düzenli güncelleme",
+                    "blog_content3_7": "Medium/YouTube'dan yeni teknolojiler öğrenmek",
+                    "blog_content3_8": "💡 Öğrenci Tavsiyesi: Disiplinli çalışma rutini oluşturmak, uzun vadede en büyük kazancınız olacaktır!",
+                    "blog_title4": "Hangi Dil Ne Zaman? Java mı Python mu?",
+                    "blog_content4_1": "Üniversite projelerinde Java ile OOP mantığını çok iyi öğrendim. Ancak daha hızlı çözüm üretmek istediğimde Python devreye girdi. Özellikle:",
+                    "blog_content4_2": "Java: Büyük ölçekli projeler ve OOP prensipleri için mükemmel",
+                    "blog_content4_3": "Python: Veri analizi, makine öğrenmesi ve hızlı prototipleme için ideal",
+                    "blog_content4_4": "JavaScript: Web arayüzleri ve etkileşimli uygulamalar için vazgeçilmez",
+                    "blog_content4_5": "🔍 Kişisel deneyimlerim:",
+                    "blog_content4_6": "Okul projelerinde Java'nın katı yapısı algoritmik düşünmemi geliştirdi",
+                    "blog_content4_7": "Python'da pandas kütüphanesiyle veri işleme çok daha pratik",
+                    "blog_content4_8": "JavaScript async yapısını öğrenmek frontend development'ta çığır açtı",
+                    "blog_content4_9": "🌟 Kariyer Tavsiyesi: 'Hangi dil?' sorusundan çok 'Hangi problem?' sorusuna odaklanın. Dil sadece araçtır!",                                      
+                    "contact_title": "İletişim",
+                    "location": "İstanbul, Türkiye",
+                    "social_media": "Sosyal Medya Hesaplarım"
+                },
+                en: {                 
+                    "page_title": "Kadriye Işık | Portfolio",
+                    "rights": "All rights reserved",                                      
+                    "home": "Home",
+                    "about": "About",
+                    "education": "Education",
+                    "technologies": "Technologies",
+                    "blog": "Blog",
+                    "contact": "Contact",                                      
+                    "about_title": "About Me",
+                    "about_paragraph1": "Hello, I'm a graduate of Darıca Science High School and a 3rd year Computer Engineering student at Alanya University. My interest in software development has led me to continuously improve both my theoretical and practical skills.",
+                    "about_paragraph2": "During the summer of 2025, I gained professional experience through an internship at Onaymatik, where I had the opportunity to observe and contribute to software development processes in a professional environment. While proficient in programming languages like Java, Python, and JavaScript, I'm also actively working on and improving my skills in web development technologies such as HTML and CSS.",
+                    "about_paragraph3": "I maintain a disciplined learning process to reinforce my academic knowledge with real-world projects, develop teamwork skills, and deepen my expertise in software engineering. My goal is to participate in projects where technology contributes to improving human lives as a fully-equipped software developer.",
+                    "about_paragraph4": "I'm fluent in English and have intermediate German skills. This allows me to access a wide range of academic resources and communicate effectively in international work environments.",
+                    "education_title": "Education",
+                    "high_school": "Darıca Science High School",
+                    "university": "Alanya University",
+                    "university_desc": "English Computer Engineering (Expected Graduation: 2022 - 2027)",
+                    "certificates": "Certificates",
+                    "cert1": "Udemy: Modern JavaScript (2023)",
+                    "cert2": "Udemy: Frontend Development with React (2023)",
+                    "cert3": "Udemy: OOP with Java (2024)",
+                    "cert4": "Udemy: Backend with PHP (2024)",
+                    "cert5": "Udemy: HTML/CSS Masterclass (2022)",
+                    "cert6": "Udemy: Python for Beginners (2023)",
+                    "cert7": "Udemy: SQL Database Management (2024)",
+                    "technologies_title": "Technologies",
+                    "blog_title": "Technical Blog",
+                    "blog_title1": "My Software Internship Experience at Onaymatik",
+                    "blog_content1_1": "My internship at Onaymatik, which I started in the summer of my 3rd year at university, showed me the real face of the software world. For the first time, I had the opportunity to write code as part of a team. I applied my Java and HTML/CSS knowledge to real projects while also needing to learn new technologies.",
+                    "blog_content1_2": "Debugging in real systems, writing tests, and receiving feedback were both challenging and developmental. This internship taught me not just technical skills but many things about professional life.",
+                    "blog_content1_3": "🛠️ Specifically:",
+                    "blog_content1_4": "At first I struggled to adapt to code organization but gradually learned to think systematically.",
+                    "blog_content1_5": "Getting code reviews from teammates taught me the developer perspective.",
+                    "blog_content1_6": "When I found and fixed a bug on my own, my motivation increased incredibly.",
+                    "blog_content1_7": "✅ My advice: Gain practice by doing simple projects before starting an internship. An internship isn't just about showing your knowledge, but how open you are to learning.",
+                    "blog_title2": "How I Built My Personal Website",
+                    "blog_content2_1": "As a software developer, I wanted to create a personal website to better express myself. Transforming my HTML and CSS knowledge into a real project was both fun and educational.",
+                    "blog_content2_2": "I designed my own logo, tested responsive design, added interactive elements with JavaScript, and then published it for free via GitHub Pages.",
+                    "blog_content2_3": "🎨 Things I did:",
+                    "blog_content2_4": "Kept the color palette simple and professional",
+                    "blog_content2_5": "Coded the footer, navbar, about and blog sections one by one",
+                    "blog_content2_6": "Used a software-oriented style in logo design (code block appearance)",
+                    "blog_content2_7": "✅ My advice: Building a website is more of a creative journey than a technical skill. A site that introduces you will put you one step ahead.",
+                    "blog_title3": "Daily Life as a Computer Engineering Student",
+                    "blog_content3_1": "Graduating from Darıca Science High School and studying English Computer Engineering at Alanya University was a major transformation for me. Every course has its own projects, exams, and assignments. But the real development came from what I learned outside the classroom.",
+                    "blog_content3_2": "Finding resources on YouTube, getting used to reading documentation, and producing solutions on my own are at the heart of this field. As both a woman and an engineering candidate, I learned to say 'I can do this'.",
+                    "blog_content3_3": "🧠 My daily habits:",
+                    "blog_content3_4": "At least 1 hour of coding practice",
+                    "blog_content3_5": "Weekly project or blog plan",
+                    "blog_content3_6": "Regular updates on GitHub",
+                    "blog_content3_7": "Learning new technologies from Medium/YouTube",
+                    "blog_content3_8": "💡 Student Advice: Creating a disciplined work routine will be your biggest gain in the long run!",
+                    "blog_title4": "Which Language When? Java or Python?",
+                    "blog_content4_1": "I learned OOP logic very well with Java in university projects. But when I needed faster solutions, Python came into play. Specifically:",
+                    "blog_content4_2": "Java: Perfect for large-scale projects and OOP principles",
+                    "blog_content4_3": "Python: Ideal for data analysis, machine learning and rapid prototyping",
+                    "blog_content4_4": "JavaScript: Indispensable for web interfaces and interactive applications",
+                    "blog_content4_5": "🔍 My personal experiences:",
+                    "blog_content4_6": "Java's strict structure in school projects improved my algorithmic thinking",
+                    "blog_content4_7": "Data processing with pandas library in Python is much more practical",
+                    "blog_content4_8": "Learning JavaScript's async structure was revolutionary in frontend development",
+                    "blog_content4_9": "🌟 Career Advice: Focus more on the 'Which problem?' question than 'Which language?'. Language is just a tool!",
+                    "contact_title": "Contact",
+                    "location": "Istanbul, Turkey",
+                    "social_media": "My Social Media Accounts"
+                }
+            };
+            function changeLanguage(lang) {
+                $('html').attr('lang', lang);
+                $('[data-i18n]').each(function() {
+                    const key = $(this).data('i18n');
+                    $(this).text(translations[lang][key] || key);
+                });
+                document.title = translations[lang]['page_title'];
+                localStorage.setItem('language', lang);
+            }
+            $('#language-selector').change(function() {
+                const selectedLang = $(this).val();
+                changeLanguage(selectedLang);
+            });
+            const savedLang = localStorage.getItem('language') || 'tr';
+            $('#language-selector').val(savedLang);
+            changeLanguage(savedLang);
             let currentSlide = 0;
             const slides = $('.slider img');
             const totalSlides = slides.length;
             function showSlide(index) {
-            if (index >= totalSlides) currentSlide = 0;
-            else if (index < 0) currentSlide = totalSlides - 1;
-            else currentSlide = index;    
-            $('.slider').css('transform', `translateX(-${currentSlide * 100}%)`);
+                if (index >= totalSlides) currentSlide = 0;
+                else if (index < 0) currentSlide = totalSlides - 1;
+                else currentSlide = index;    
+                $('.slider').css('transform', `translateX(-${currentSlide * 100}%)`);
             }
             $('#next-slide').click(() => showSlide(currentSlide + 1));
             $('#prev-slide').click(() => showSlide(currentSlide - 1));
             $('#theme-toggle').click(function() {
-            $('body').toggleClass('dark-theme');
-            $(this).find('i').toggleClass('fa-moon fa-sun');
-            localStorage.setItem('theme', $('body').hasClass('dark-theme') ? 'dark' : 'light');
-            });
+                $('body').toggleClass('dark-theme');
+                $(this).find('i').toggleClass('fa-moon fa-sun');
+                localStorage.setItem('theme', $('body').hasClass('dark-theme') ? 'dark' : 'light');
+            }); 
             $('#home-link').click(function(e) {
-             e.preventDefault();
-            $('.nav-link').removeClass('active');
-            $('.content-section').removeClass('active-content');
-            $('#anasayfa-content').addClass('active-content');
-            $('html, body').animate({ scrollTop: 0 }, 500);
-            $('nav a[data-target="anasayfa"]').addClass('active');
-            });
+                e.preventDefault();
+                $('.nav-link').removeClass('active');
+                $('.content-section').removeClass('active-content');
+                $('#anasayfa-content').addClass('active-content');
+                $('html, body').animate({ scrollTop: 0 }, 500);
+                $('nav a[data-target="anasayfa"]').addClass('active');
+            });   
             $('.nav-link').click(function(e) {
-             e.preventDefault();
-             const target = $(this).data('target');    
-            $('.nav-link').removeClass('active');
-            $(this).addClass('active');     
-            $('.content-section').removeClass('active-content');
-            $(`#${target}-content`).addClass('active-content');    
-            $('html, body').animate({
-            scrollTop: $(`#${target}-content`).offset().top - 100
-            }, 500);
+                e.preventDefault();
+                const target = $(this).data('target');    
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');     
+                $('.content-section').removeClass('active-content');
+                $(`#${target}-content`).addClass('active-content');    
+                $('html, body').animate({
+                    scrollTop: $(`#${target}-content`).offset().top - 100
+                }, 500);
             });
             if (localStorage.getItem('theme') === 'dark') {
-            $('body').addClass('dark-theme');
-            $('#theme-toggle i').removeClass('fa-moon').addClass('fa-sun');
+                $('body').addClass('dark-theme');
+                $('#theme-toggle i').removeClass('fa-moon').addClass('fa-sun');
             }
-            });
-          </script>
-          </body>
-          </html>
+        });
+    </script>
+</body>
+</html>
