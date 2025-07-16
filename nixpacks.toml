@@ -3,10 +3,7 @@ nixPkgs = ['...', 'php81', 'php81Packages.composer']
 
 [phases.build]
 cmds = [
-    'composer install --no-dev --optimize-autoloader',
-    'php artisan config:cache',
-    'php artisan route:cache',
-    'php artisan view:cache'
+    'composer install --no-dev --optimize-autoloader'
 ]
 
 [phases.deploy]
