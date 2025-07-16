@@ -7,4 +7,4 @@ cmds = [
 ]
 
 [phases.deploy]
-startCommand = 'php artisan migrate --force && php artisan db:seed --force && php -S 0.0.0.0:$PORT router.php'
+startCommand = 'php artisan migrate --force && php artisan db:seed --force && cd public && php -S 0.0.0.0:$PORT'
